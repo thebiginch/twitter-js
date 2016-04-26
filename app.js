@@ -1,10 +1,19 @@
 var express = require('express');
 var chalk = require('chalk');
 var app = express();
+var swig = require('swig');
+swig.setDefaults({ cache: false });
+var people = [{name: 'Gandalf'},
+			{name: 'Frodo'},
+			{name: 'Hermione'}]
 
 var verb = chalk.green;
 var path = chalk.blue;
 var error = chalk.bold.red;
+
+app.engine('html', swig.renderFile);
+app.set('view engine','html');
+app.set('views', __dirname+'/views');
 
 app.use(function(req,res,next){
 
@@ -21,9 +30,10 @@ app.use('/special',function(req,res,next){
 
 
 app.use(function(req,res,next){
-
-	//console.log(res.statusCode);
-	res.send();
+	res.render('index',{
+		title: 'An Example',
+		people: people;
+	})
 });
 
 
