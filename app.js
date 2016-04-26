@@ -7,7 +7,9 @@ var people = [{name: 'Gandalf'},
 			{name: 'Frodo'},
 			{name: 'Hermione'}];
 var routes = require('./routes');
+var morgan = require('morgan');
 
+app.use(morgan('combined'));
 app.use('/',routes);
 app.use(express.static('public'));
 

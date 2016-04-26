@@ -36,5 +36,5 @@ for (var i = 0; i < 10; i++) {
   module.exports.add( getFakeName(), getFakeTweet() );
 }
 
-//add('Zach Alfonso','Fullstack is fun!')
+add('Zach','Fullstack is fun!');
 //console.log(find({'name':'Zach Alfonso'}));
