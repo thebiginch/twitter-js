@@ -1,11 +1,15 @@
 var express = require('express');
-var chalk = require('chalk');
 var app = express();
+
+var chalk = require('chalk');
+
 var swig = require('swig');
 swig.setDefaults({ cache: false });
+
 var people = [{name: 'Gandalf'},
 			{name: 'Frodo'},
 			{name: 'Hermione'}];
+
 var routes = require('./routes');
 var morgan = require('morgan');
 
@@ -22,22 +26,10 @@ app.engine('html', swig.renderFile);
 app.set('view engine','html');
 app.set('views', __dirname+'/views');
 
-// app.use(function(req,res,next){
-
-// });
-
-// app.use(function(req,res,next){
-
-// });
 
 
 
-// app.use(function(req,res,next){
-// 	res.render('index',{
-// 		title: 'An Example',
-// 		people: people
-// 	})
-// });
+
 
 
 
