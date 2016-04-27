@@ -6,15 +6,26 @@ var chalk = require('chalk');
 var swig = require('swig');
 swig.setDefaults({ cache: false });
 
-var people = [{name: 'Gandalf'},
-			{name: 'Frodo'},
-			{name: 'Hermione'}];
 
+var body_parser = require('body-parser');
 var routes = require('./routes');
 var morgan = require('morgan');
 
 app.use(morgan('combined'));
+
+app.use(body_parser.urlencoded({ extended: false }));
+app.use(body_parser.json());
+
 app.use('/',routes);
+
+app.use(function (req, res) {
+  res.setHeader('Content-Type', 'text/plain')
+  res.write('you posted:\n')
+  res.end(JSON.stringify(req.body, null, 2))
+})
+
+
+
 app.use(express.static('public'));
 
 
