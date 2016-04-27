@@ -3,7 +3,8 @@ var _ = require('lodash');
 var data = [];
 
 function add (name, text) {
-  data.push({ name: name, text: text });
+  var id = data.length;
+  data.push({ name: name, text: text, id: id});
 }
 
 function list () {
@@ -37,4 +38,4 @@ for (var i = 0; i < 10; i++) {
 }
 
 add('Zach','Fullstack is fun!');
-//console.log(find({'name':'Zach Alfonso'}));
+add('Zach','Testing the tweet ID should be 12!');
